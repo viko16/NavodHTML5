@@ -1,0 +1,18 @@
+﻿{
+    "manifest_version": 2,
+    "name": "NA在线影院html5播放器",
+    "version": "1.0",
+    "description": "NA在线影院html5播放器",
+    "author": "viko16",
+    "icons": {
+        "48": "icons/icon_48.png"
+    },
+    "content_scripts": [{
+        "matches": ["http://navod.scse.com.cn/*", "http://172.16.31.101/*"],
+        "js": ["videojs/video.js", "jquery.js", "content_scripts.js"],
+        "css": ["videojs/video-js.min.css"],
+        "run_at": "document_end"
+    }],
+    "permissions": ["http://navod.scse.com.cn/*", "http://172.16.31.101/*"],
+    "web_accessible_resources": ["videojs/font/*", "jquery.min.map"]
+}
