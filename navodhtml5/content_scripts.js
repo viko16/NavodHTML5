@@ -16,4 +16,11 @@ if (document.getElementsByTagName("object")[0] != undefined) {
     //然后就是插真实地址咯
     var r = ("<source src='" + movieurl + "' type='video/mp4' />");
     $('#hehevideo').append(r);
+    //增加音量记忆功能
+    if (window.localStorage) {
+        if (localStorage.volume) {
+            var v = document.getElementsByTagName("video")[0];
+            v.volume = localStorage.volume;
+        }
+    }
 }
