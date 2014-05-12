@@ -2,11 +2,12 @@
     "manifest_version": 2,
     "name": "NA在线影院html5播放器",
     "version": "1.2",
-    "description": "NA在线影院html5播放器",
+    "description": "NA在线影院html5播放器 - CA工作室出品",
     "author": "viko16",
     "icons": {
         "48": "icons/icon_48.png"
     },
+    "homepage_url": "https://github.com/viko16/NavodHTML5",
     "content_scripts": [{
         "matches": ["http://navod.scse.com.cn/*", "http://172.16.31.101/*"],
         "js": ["videojs/video.js", "jquery.js", "content_scripts.js"],
