@@ -47,15 +47,34 @@ if (document.getElementsByTagName("object")[0] != undefined) {
     }
     var inject=function(){
     /*
+        //先获取video对象
+        var v = document.getElementsByTagName("video")[0];
         //在页面关闭时保存进度
         window.onbeforeunload = dealHistoryDetail;
         function dealHistoryDetail() {
-        var v = document.getElementsByTagName("video")[0];
         if (!v.ended)  //影片没结束才把播放时长记下来，不然记录个最后没意思~
             video_info.played_time = v.currentTime;
         if(v.currentTime != 0) //没有播的就不用记录了
             addHistory();
-    }
+        }
+        //监听按键，全屏时，左右键控制前进后退，上下键控制音量
+        document.onkeyup = keyUp;
+        function keyUp(e) {
+            if (document.webkitIsFullScreen) {  //只是全屏才生效
+                var currKeyNum = e.which;
+                if (currKeyNum == 37) { //左键
+                    v.currentTime -= 10;
+                } else if(currKeyNum == 39) { //右键
+                    v.currentTime += 10;
+                } else if(currKeyNum == 38) { //上键
+                    if(v.volume + 0.2 <= 1) v.volume += 0.2;
+                    else v.volume = 1;
+                } else if(currKeyNum == 40) { //下键
+                    if(v.volume - 0.2 >= 0) v.volume -= 0.2;
+                    else v.volume = 0;
+                }
+            }　
+        }
     */}.getMultiLine();
 
     var x=document.createElement("script");
