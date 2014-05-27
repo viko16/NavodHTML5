@@ -1,11 +1,15 @@
 //判断是否播放页，非播放页无<object>的
 if (document.getElementsByTagName("object")[0] != undefined) {
     //提取真实地址
-    var movieurl = $("object").find("param[name=FlashVars]").val().replace("&play_url=", "").replace("&play_url_hd=", "").split("&")[0];
+    var movieurl = $("object").find("param[name=FlashVars]").val().
+                   replace("&play_url=", "").
+                   replace("&play_url_hd=", "").
+                   replace("&play_url_low=", "").
+                   split("&")[0];
     //url编码解码
     movieurl = unescape(movieurl);
     //如果是外网访问，就替换一下路径
-    if ((window.location.href).indexOf("172.16") == -1)
+    if ((window.location.href).indexOf("172.16") == -1) //最简单的判断
         movieurl = movieurl.replace("172.16.31.102", "navod.scse.com.cn");
     //移除旧播放器
     $('object').remove();
