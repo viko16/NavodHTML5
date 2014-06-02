@@ -1,0 +1,294 @@
+
+body {
+    padding-top: 50px;
+    color: #3f3f3f
+}
+
+.container {
+    max-width: 1000px
+}
+
+.horizontal-line {
+    background-color: #dadada;
+    height: 3px
+}
+
+.top-nav a {
+    color: #000;
+    font-weight: 700
+}
+
+.jumbotron {
+    margin-top: 30px;
+    height: 430px;
+    background: url(../images/photo.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover
+}
+
+.main-cta-left {
+    color: #fff;
+    padding-top: 120px
+}
+
+.title {
+    font-size: 34px;
+    margin-bottom: 20px
+}
+
+.sub-title {
+    font-size: 19px;
+    line-height: 25px
+}
+
+.main-cta-btn-wrapper {
+    margin-top: 20px
+}
+
+.main-cta-right {
+    width: 560px;
+    margin-left: 0
+}
+
+.main-carousel-wrapper {
+    margin-top: 33px
+}
+
+.main-carousel-wrapper .carousel-indicators {
+    margin-top: 360px;
+    margin-right: 10px
+}
+
+.notifications {
+    background-color: #3f3f3f;
+    margin-top: 50px
+}
+
+.notification-subject {
+    background-color: #21bbf9;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0
+}
+
+.notification-message a {
+    color: #fff;
+    padding: 10px 0;
+    width: 100%;
+    display: inline-block
+}
+
+.features-section-wrapper {
+    margin-top: 50px
+}
+
+.feature-wrapper {
+    margin-bottom: 50px
+}
+
+.feature-title {
+    color: #3f3f3f;
+    margin-bottom: 15px
+}
+
+.feature-title i {
+    margin-right: 10px
+}
+
+.feature-text {
+    color: #7f7f7f;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 26px
+}
+
+.testimonial-carousel-wrapper {
+    margin-top: 50px
+}
+
+.testimonial-carousel-wrapper blockquote {
+    border: 0;
+    font-size: 25px;
+    line-height: 30px;
+    font-style: oblique;
+    color: #989898
+}
+
+.testimonial-carousel-wrapper .carousel-indicators {
+    margin-top: 80px
+}
+
+.testimonial-carousel-wrapper .carousel-indicators li {
+    background-color: #ccc
+}
+
+.testimonial-carousel-wrapper .carousel-indicators li.active {
+    background-color: #7f7f7f
+}
+
+.why-process-wrapper {
+    padding-top: 60px
+}
+
+.productive-wrapper {
+    padding-bottom: 20px
+}
+
+.productive-body-wrapper {
+    margin-top: 40px
+}
+
+.pricing-title {
+    font-size: 35px;
+    margin-bottom: 20px
+}
+
+.price-price {
+    font-weight: 700;
+    font-size: 43px;
+    margin-left: 10px;
+    position: relative;
+    top: 23px
+}
+
+.price-per-month {
+    font-size: 14px;
+    font-weight: 700;
+    color: #bfbfbf;
+    position: relative;
+    top: 23px
+}
+
+.price-header {
+    padding-bottom: 10px;
+    border-bottom: 3px solid #cdcdcd
+}
+
+.price-details {
+    margin-left: 55px;
+    margin-top: 15px;
+    list-style-type: none;
+    font-size: 14px
+}
+
+.price-detail-item {
+    margin-bottom: 10px
+}
+
+.section-wrapper {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.section-title-wrapper {
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.section-title {
+    font-size: 35px
+}
+
+.section-body-wrapper {
+    font-size: 18px;
+    color: #595959;
+    line-height: 30px
+}
+
+.bottom-cta-wrapper {
+    text-align: center
+}
+
+.bottom-cta-text-wrapper {
+    font-size: 20px;
+    margin: 0 15px
+}
+
+.footer-wrapper {
+    width: 100%;
+    background-color: #3f3f3f;
+    padding: 50px 0
+}
+
+.footer-align-right {
+    text-align: right
+}
+
+.footer-link-list {
+    list-style-type: none;
+    margin: 0
+}
+
+.footer-link-item {
+    margin-bottom: 5px
+}
+
+.footer-link-item a {
+    color: #7f7f7f
+}
+
+.footer-meta-wrapper {
+    margin-top: 40px;
+    color: #666;
+    font-size: 13px
+}
+
+.footer-meta-wrapper a {
+    color: #666
+}
+
+.cta-footer {
+    background: #595959;
+    color: #bfbfbf;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px 20px;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0;
+    margin-bottom: 5px
+}
+
+.cta-footer:hover {
+    background: #7f7f7f;
+    color: #bfbfbf
+}
+
+.cta-button {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px 20px;
+    background: #39a724;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0
+}
+
+.cta-button:hover {
+    background: #21af04
+}
+
+#___plusone_0 {
+    width: 33px!important;
+    overflow: hidden!important
+}
+
+.facebook-like-button {
+    border: 0;
+    overflow: hidden;
+    width: 50px;
+    height: 21px;
+    position: relative;
+    top: 1px;
+    margin-left: 5px
+}
+
+.twitter-share-button {
+    margin-left: 5px
+}
