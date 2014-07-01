@@ -2,15 +2,16 @@
 if (document.getElementsByTagName("object")[0] != undefined) {
     //提取真实地址
     var movieurl = $("object").find("param[name=FlashVars]").val().
-                   replace("&play_url=", "").
-                   replace("&play_url_hd=", "").
-                   replace("&play_url_low=", "").
-                   split("&")[0];
+								replace("&play_url=", "").
+							    replace("&play_url_hd=", "").
+							    replace("&play_url_low=", "").
+							    split("&")[0];
     //url编码解码
     movieurl = unescape(movieurl);
-    //如果是外网访问，就替换一下路径
-    if ((window.location.href).indexOf("172.16") == -1) //最简单的判断
-        movieurl = movieurl.replace("172.16.31.102", "navod.scse.com.cn");
+    //替换路径为域名，方便内外网都能访问
+    movieurl = movieurl.replace("172.16.31.101", "navod.scse.com.cn").
+						replace("172.16.31.102", "navod.scse.com.cn").
+						replace("172.16.31.103", "navod.scse.com.cn");
     //移除旧播放器
     $('object').remove();
     //插入播放器
@@ -19,8 +20,6 @@ if (document.getElementsByTagName("object")[0] != undefined) {
     //然后就是插真实地址咯
     var r = ("<source src='" + movieurl + "' type='video/mp4' />");
     $('#hehevideo').append(r);
-
-
     //增加音量记忆功能
     if (window.localStorage) {
         if (localStorage.volume) {
@@ -28,8 +27,6 @@ if (document.getElementsByTagName("object")[0] != undefined) {
             v.volume = localStorage.volume; //设置音量
         }
     }
-
-
     //插入一段css，调用字体图标
     var c = document.createElement('style');
     var font_css = "@font-face {font-family: 'VideoJS';";
@@ -40,27 +37,26 @@ if (document.getElementsByTagName("object")[0] != undefined) {
     font_css += "font-weight: normal;font-style: normal;}";
     c.innerHTML = font_css;
     document.head.appendChild(c);
-
-
-
     //淫荡的插入一段代码，注释中间才是正式代码
     Function.prototype.getMultiLine = function() {
         var lines = new String(this);
         lines = lines.substring(lines.indexOf("/*") + 3, lines.lastIndexOf("*/"));
         return lines;
     }
-    var inject=function(){
+    var inject = function() {
     /*
         //先获取video对象
         var v = document.getElementsByTagName("video")[0];
         //在页面关闭时保存进度
         window.onbeforeunload = dealHistoryDetail;
+
         function dealHistoryDetail() {
         if (!v.ended)  //影片没结束才把播放时长记下来，不然记录个最后没意思~
             video_info.played_time = v.currentTime;
         if(v.currentTime != 0) //没有播的就不用记录了
             addHistory();
         }
+        
         //监听按键，全屏时，左右键控制前进后退，上下键控制音量
         document.onkeyup = keyUp;
         function keyUp(e) {
@@ -81,9 +77,9 @@ if (document.getElementsByTagName("object")[0] != undefined) {
         }
     */}.getMultiLine();
 
-    var x=document.createElement("script");
-    x.type="text/javascript";
-    var y=document.createTextNode(inject);
+    var x = document.createElement("script");
+    x.type = "text/javascript";
+    var y = document.createTextNode(inject);
     x.appendChild(y);
     document.body.appendChild(x);
 }
