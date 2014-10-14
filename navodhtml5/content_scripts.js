@@ -3,12 +3,11 @@ if (flash.length > 0) {
   //提取真实地址
   var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1];
 
-  movieurl = unescape(movieurl);
-
   //替换路径为域名，方便内外网都能访问
-  movieurl = movieurl.replace("172.16.31.101", "navod.scse.com.cn").
-						replace("172.16.31.102", "navod.scse.com.cn").
-						replace("172.16.31.103", "navod.scse.com.cn");
+  movieurl = unescape(movieurl)
+            .replace("172.16.31.101", "navod.scse.com.cn")
+            .replace("172.16.31.102", "navod.scse.com.cn")
+            .replace("172.16.31.103", "navod.scse.com.cn");
 
   var player = $('<video>');
   player.css('width', '100%');
@@ -53,6 +52,18 @@ if (flash.length > 0) {
       case 40: // 下
         evt.preventDefault();
         player.prop('volume', volume < 0.1 ? 0.0 : volume - 0.1);
+        break;
+      case 32: // 空格
+        evt.preventDefault();
+        if (player.prop('paused')) {
+          player[0].play();
+        } else {
+          player[0].pause();
+        }
+        break;
+      case 13: // 回车
+        evt.preventDefault();
+        player[0].webkitRequestFullscreen();
         break;
     }
   });
