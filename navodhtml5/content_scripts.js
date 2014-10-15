@@ -1,9 +1,9 @@
 var flash = $('embed#player_fg[FlashVars]');
 if (flash.length > 0) {
-  //提取真实地址
+  // 提取真实地址
   var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1];
 
-  //替换路径为域名，方便内外网都能访问
+  // 替换路径为域名，方便内外网都能访问
   movieurl = unescape(movieurl)
             .replace("172.16.31.101", "navod.scse.com.cn")
             .replace("172.16.31.102", "navod.scse.com.cn")
@@ -14,6 +14,7 @@ if (flash.length > 0) {
   player.attr('src', movieurl);
   player.attr('autoplay', true);
   player.attr('controls', true);
+  player.attr('preload', 'auto');
 
   var wrapper = $('<div>');
   wrapper.css('width', 960);
@@ -67,4 +68,15 @@ if (flash.length > 0) {
         break;
     }
   });
+
+  // 往原页面插 script
+  function insertScript (path) {
+    var script = document.createElement('script');
+    script.src = chrome.extension.getURL(path);
+    document.body.appendChild(script);
+  }
+
+  // 播放位置记忆功能
+  insertScript('extra.js');
+
 }
