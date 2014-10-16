@@ -32,6 +32,22 @@ if (flash.length > 0) {
     localStorage.volume = player.prop('volume');
   });
 
+  player.on('click', function () {
+    if (this.paused) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  });
+
+  player.on('dblclick', function () {
+    if (document.webkitIsFullScreen) {
+      document.webkitExitFullscreen();
+    } else {
+      this.webkitRequestFullScreen();
+    }
+  });
+
   // 快捷键
   $(document.body).on('keydown', function (evt) {
     var time = player.prop('currentTime');
@@ -64,7 +80,7 @@ if (flash.length > 0) {
         break;
       case 13: // 回车
         evt.preventDefault();
-        player[0].webkitRequestFullscreen();
+        player[0].webkitRequestFullScreen();
         break;
     }
   });
