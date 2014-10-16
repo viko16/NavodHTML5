@@ -49,7 +49,7 @@ $(document).ready(function() {
         if(obj.vid == video_info.video_id && obj.video_index == video_info.video_index) {
           player.play();
 
-          $(player).on('canplay', function() {
+          $(player).one('canplay', function() {
             player.currentTime = obj.currentTime;
           });
 
