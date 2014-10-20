@@ -6,6 +6,8 @@ $(window).on('beforeunload', function() {
   // 开播才记录
   if(player.currentTime != 0) {
 
+    addHistory(); // 临时补上播放历史
+
     var historyInfo = new Array();
 
     if(localStorage.playHistory) {
@@ -38,9 +40,10 @@ $(window).on('beforeunload', function() {
 });
 
 
-// 跳转到播放位置
+
 $(document).ready(function() {
 
+  // 跳转到播放位置
   if(localStorage.playHistory) {
       historyInfo = JSON.parse(localStorage.playHistory);
 
