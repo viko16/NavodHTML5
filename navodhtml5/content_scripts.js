@@ -1,3 +1,4 @@
+insertCss('newcss.css');
 var flash = $('embed#player_fg[FlashVars]');
 //读取值对信息，判断是否播放最新一集
 function GetRequest() {
@@ -167,6 +168,22 @@ if (flash.length > 0) {
   
 
 }
+function showselect(){
+	if($('.movie_page_index').length>0){
+		$("#title_btn_two").css({'display':'none'});
+		var temp = $(".movie_remarks").html();
+		var selects = $('<div>');
+		$('.movie_page_index').each(function(){
+			selects.append($(this));
+		});
+		$(".movie_remarks").empty();
+		$(".movie_remarks").html("<div style='width:100%;overflow: hidden;margin-top: 20px;'>"+selects.html()+"</div>" +"<div id='movie_remarks'>"+temp+"</div>");
+		$(".movie_remarks").attr('class','');
+		$("#movie_remarks").attr('class','movie_remarks');
+	}
+
+}
+
 //读取新css
 function insertCss (path) {
 	var node = document.createElement("link");
@@ -174,7 +191,18 @@ function insertCss (path) {
     node.setAttribute("type","text/css");
     node.setAttribute("href",chrome.extension.getURL(path));
     document.body.appendChild(node);
+    $('img').each(function(){
+		if($(this).attr('src')=='images/look_btn.png'){
+			var sa = $('<div>');
+			sa.html("点击播放");
+			sa.css({'width':'70px','background':'#3681D5','border-radius':'3px','padding':'6px 1px 6px 13px','font-size':'14px','color':'#fff'});
+    		$(this).parent().append(sa);
+    		$(this).attr('src','');
+    		
+    	}
+    });
+    
   }
 var selectbutton = $('.select_btn');
 selectbutton.attr('value', '搜索'); 
-insertCss('newcss.css');
+showselect();
