@@ -1,0 +1,24 @@
+.top {
+/* background: url(../images/top_bg.jpg); */
+background: #FFFFFF;
+box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+margin-bottom: 40px;
+}
+.daohang_content{
+width:770px;
+}
+.daohang_time{
+width:160px;
+}
+.select_btns .select_btn{
+background: #70A3F7;
+color: #fff;
+width: 84px;
+border-radius: 3px;
+padding: 9px;
+font-size: 17px;
+text-align: center;
+}
+.copyright_msg{
+height: 40px;
+}
