@@ -10,10 +10,9 @@
     "homepage_url": "https://github.com/viko16/NavodHTML5",
     "content_scripts": [{
         "matches": ["http://navod.scse.com.cn/*"],
-		"css": ["newcss.css"],
         "js": ["jquery-2.1.1.min.js", "content_scripts.js"],
         "run_at": "document_end"
     }],
     "permissions": ["http://navod.scse.com.cn/*"],
-    "web_accessible_resources": ["extra.js" , "newcss.css"]
+    "web_accessible_resources": ["extra.js"]
 }

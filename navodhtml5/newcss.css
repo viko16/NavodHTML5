@@ -1,75 +1,94 @@
 .top {
-/* background: url(../images/top_bg.jpg); */
-background: #FFFFFF;
-box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
-margin-bottom: 40px;
+    /* background: url(../images/top_bg.jpg); */
+    background: #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+    margin-bottom: 40px;
 }
-.daohang_content{
-width:770px;
-}
-.daohang_time{
-width:160px;
-}
-.select_btns .select_btn{
-background: #70A3F7;
-color: #fff;
-width: 84px;
-border-radius: 3px;
-padding: 9px;
-font-size: 17px;
-text-align: center;
-}
-.copyright_msg{
-height: 40px;
-}
-.player_msgs_right{
-	margin-top: -20px;
-}
-.movie_remarks{
-margin-top: 5px;
-}
-.daohang_content_indexa.select{
-background: #3681D5;
-}
-.daohang_right{
-display: none;
-}
-.daohang_left{
-display: none;	
-}
-.top_daohang{
 
+.daohang_content {
+    width: 770px;
+}
+
+.daohang_time {
+    width: 160px;
+}
+
+.select_btns .select_btn {
+    background: #70A3F7;
+    color: #fff;
+    width: 84px;
+    border-radius: 3px;
+    padding: 9px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.copyright_msg {
+    height: 40px;
+}
+
+.player_msgs_right {
+    margin-top: -20px;
+}
+
+.movie_remarks {
+    margin-top: 5px;
+}
+
+.daohang_content_indexa.select {
+    background: #3681D5;
+}
+
+.daohang_right {
+    display: none;
+}
+
+.daohang_left {
+    display: none;
+}
+
+.top_daohang {
 
 }
-.daohang_content_indexahover, .daohang_content_indexa.daohang_content_indexahover.select{
-color: #3681D5;	
+
+.daohang_content_indexahover, .daohang_content_indexa.daohang_content_indexahover.select {
+    color: #3681D5;
 }
-.zhibo_index{
-border: 1px #3681D5 solid;
+
+.zhibo_index {
+    border: 1px #3681D5 solid;
 }
-.daohang_content_indexaselect, .daohang_content_indexa.daohang_content_indexaselect.select{
-background: #3681D5;	
+
+.daohang_content_indexaselect, .daohang_content_indexa.daohang_content_indexaselect.select {
+    background: #3681D5;
 }
-.zhibo_index a:hover{
-background: #3681D5;	
+
+.zhibo_index a:hover {
+    background: #3681D5;
 }
-.movie_page_indexa.select, .movie_page_indexa:hover{
-background: #3681D5;
+
+.movie_page_indexa.select, .movie_page_indexa:hover {
+    background: #3681D5;
 }
-.title_btna.select, .title_btna:hover{
-border: 2px solid #3681D5;
-background: #fff;	
+
+.title_btna.select, .title_btna:hover {
+    border: 2px solid #3681D5;
+    background: #fff;
 }
-.tongyong{
-border-top: 2px solid #3681D5;
-background: #fff;	
+
+.tongyong {
+    border-top: 2px solid #3681D5;
+    background: #fff;
 }
-.title_btna{
-color: 	#3681D5;
+
+.title_btna {
+    color: #3681D5;
 }
-.totle_title{
-color: 	#3681D5;
+
+.totle_title {
+    color: #3681D5;
 }
-.movie_lists_title a{
-color: 	#3681D5;	
+
+.movie_lists_title a {
+    color: #3681D5;
 }
