@@ -3,12 +3,12 @@ var flash = $('embed#player_fg[FlashVars]');
 if (flash.length > 0) {
 
     // 自动播放最新一集
-    var Request = new Object();
-    Request = GetRequest();
+    var Request = {};
+    Request = IsLatest();
     if (Request['nns_video_index'] > -1) {
-        //手动选择的集数
+        // 手动选择的集数
     } else {
-        //从最新一集开始播放，避免追剧时的多次选择
+        // 从最新一集开始播放，避免追剧时的多次选择
         if ($('.movie_page_index').length > 0) {
             var urls = $("div[class='movie_page_index']:last").html().match(/href\="(.*?)"/)[1];
             urls = urls.replace(/&amp;/gi, "&");
@@ -56,8 +56,8 @@ if (flash.length > 0) {
         'padding': '10px',
         'text-align': 'center'
     });
-    helperblock.append(helpertitle, downloadbutton); //此处可放更多功能按钮
-    //放进侧边栏
+    helperblock.append(helpertitle, downloadbutton); // 此处可放更多功能按钮
+    // 放进侧边栏
     $('.player_msgs_right').prepend(helperblock);
 
 
@@ -157,14 +157,14 @@ if (flash.length > 0) {
  * @returns {Object}
  * @constructor
  */
-function GetRequest() {
-    var url = location.search; //获取url中"?"符后的字串
-    var theRequest = new Object();
+function IsLatest() {
+    var url = location.search; // 获取url中"?"符后的字串
+    var theRequest = {};
     if (url.indexOf("?") != -1) {
         var str = url.substr(1);
-        strs = str.split("&");
+        var strs = str.split("&");
         for (var i = 0; i < strs.length; i++) {
-            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
         }
     }
     return theRequest;
