@@ -7,9 +7,18 @@ Chrome插件：NA新在线影院 HTML5 播放器
 
 安装
 ==============
-从 「Chrome网上应用店」 →[安装](https://chrome.google.com/webstore/detail/na%E5%9C%A8%E7%BA%BF%E5%BD%B1%E9%99%A2html5%E6%92%AD%E6%94%BE%E5%99%A8/eeonnpmppginengdnonfcmkmdfhaliam?hl=zh-CN)←
+安装方法1. 
+> 从 「Chrome网上应用店」 [安装](https://chrome.google.com/webstore/detail/na%E5%9C%A8%E7%BA%BF%E5%BD%B1%E9%99%A2html5%E6%92%AD%E6%94%BE%E5%99%A8/eeonnpmppginengdnonfcmkmdfhaliam?hl=zh-CN) （推荐，官方市场，能同步，会自动更新）
 
-_（由于上传到了应用商店，私钥不同会产生两只插件。以前下载安装包的童鞋可以先把旧的删掉，否则可能会产生冲突。）_
+安装方法2.
+> 
+1. 猛击我 [下载](https://github.com/viko16/navodhtml5/raw/master/navodhtml5.crx)
+1. 打开[「扩展程序」](chrome://extensions)页面
+1. 勾选「开发者模式」
+1. 将下载好的 `.crx` 文件拖到进去，猛戳一下「确定」！
+1. 搞掂！
+
+更新后有问题？尝试删掉旧版本之后再安装。
 
 作用
 ==============
@@ -47,9 +56,4 @@ _（由于上传到了应用商店，私钥不同会产生两只插件。以前�
 
 合作开发者
 ==============
-感谢（先后顺序仅为提交 Pull requests 时间）
-
-- @ONEWateR
-- @xingrz
-- @karonl
-- @djyde
+[点击查看](https://github.com/viko16/NavodHTML5/graphs/contributors)
