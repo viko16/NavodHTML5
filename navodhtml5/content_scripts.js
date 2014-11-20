@@ -1,5 +1,5 @@
 var flash = $('embed#player_fg[FlashVars]');
-
+$("#list_ad_1").css('display','none');  //去除广告
 if (flash.length > 0) {
 
     // 自动播放最新一集
@@ -99,6 +99,9 @@ if (flash.length > 0) {
 
     // 快捷键
     $(document.body).on('keydown', function (evt) {
+        if(evt.target == $('#search_top_txt')[0]) { 
+            return; 
+        }
         var time = player.prop('currentTime');
         var volume = player.prop('volume');
 
