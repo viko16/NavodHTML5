@@ -99,6 +99,9 @@ if (flash.length > 0) {
 
     // 快捷键
     $(document.body).on('keydown', function (evt) {
+        if(evt.target == $('#search_top_txt')[0]) { 
+            return; 
+        }
         var time = player.prop('currentTime');
         var volume = player.prop('volume');
 
