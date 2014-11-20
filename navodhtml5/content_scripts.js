@@ -1,5 +1,5 @@
 var flash = $('embed#player_fg[FlashVars]');
-$("#list_ad_1").css('display','none');  //去除广告
+
 if (flash.length > 0) {
 
     // 自动播放最新一集
