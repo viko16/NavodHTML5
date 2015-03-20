@@ -33,7 +33,7 @@ Chrome插件：NA新在线影院 HTML5 播放器
 
 截图
 ==============
-待补
+![screenshot](screenshot.png)
 
 
 快捷键
