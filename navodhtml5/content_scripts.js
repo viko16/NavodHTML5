@@ -25,6 +25,17 @@ if (flash.length > 0) {
         .replace("172.16.31.102", "navod.scse.com.cn")
         .replace("172.16.31.103", "navod.scse.com.cn");
 
+    // 提取当前视频名
+    var movietitle = $('.daohang_content_nowaddress div:eq(1) b').text();
+    movietitle = movietitle.replace(':', "_")
+                            .replace('/', "_")
+                            .replace('\\' ,"_")
+                            .replace('?', "_")
+                            .replace('<', "_")
+                            .replace('>', "_")
+                            .replace('*', "_")
+                            .replace('|', "_");
+
     // 配置 video 标签
     var player = $('<video>');
     player.css('width', '100%');
@@ -46,7 +57,7 @@ if (flash.length > 0) {
     // 添加“辅助功能区”，方便下载和其他功能
     var helperblock = $('<div class="same_movie">').css('overflow', 'hidden');
     var helpertitle = $('<div class="same_movie_title">').text('辅助功能');
-    var downloadbutton = $('<a>').attr('href', movieurl).text('点击下载');
+    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').text('点击下载');
     downloadbutton.css({
         'background': '#70A3F7',
         'color': '#fff',
