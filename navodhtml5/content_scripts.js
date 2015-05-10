@@ -1,5 +1,7 @@
 var flash = $('embed#player_fg[FlashVars]');
 
+console.log(flash);
+
 if (flash.length > 0) {
 
     // 自动播放最新一集
@@ -16,8 +18,9 @@ if (flash.length > 0) {
     }
 
     // 提取真实地址
-    var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1];
+    // 因为 play_url 有两种（暂时发现两种），所以需要作判断 - Randy<randypriv@gmail.com>
 
+    var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/) ? flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1] : flash.attr('FlashVars').match(/play_url_low\=([^\&]+)/)[1];
     // 替换路径为域名，方便内外网都能访问
     movieurl = decodeURIComponent(movieurl)
         .replace("172.16.31.101", "navod.scse.com.cn")
@@ -56,7 +59,6 @@ if (flash.length > 0) {
     // 添加“辅助功能区”，方便下载和其他功能
     var helperblock = $('<div class="same_movie">').css('overflow', 'hidden');
     var helpertitle = $('<div class="same_movie_title">').text('辅助功能');
-    console.log(movietitle);
     var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').text('点击下载');
     downloadbutton.css({
         'background': '#70A3F7',
@@ -69,7 +71,7 @@ if (flash.length > 0) {
     });
     helperblock.append(helpertitle, downloadbutton); // 此处可放更多功能按钮
     // 放进侧边栏
-    $('.player_msgs_right').prepend(helperblock);
+    $('.article').prepend(helperblock);
 
 
     // 单击暂停|播放
