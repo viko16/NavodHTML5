@@ -47,11 +47,11 @@ if (flash.length > 0) {
     });
 
     // 嘘，静悄悄的把播放器换掉，不要告诉其他人
-    var wrapper = $('<div>');
+    var wrapper = $('<div id="html5-video">');
     wrapper.css('width', 960);
     wrapper.css('margin', '0 auto');
     wrapper.append(player);
-    $('.live_content').css('height', 'auto').empty().append(wrapper);
+    $('#bofang').css('height', 'auto').empty().append(wrapper);
 
 
     // 添加“辅助功能区”，方便下载和其他功能
