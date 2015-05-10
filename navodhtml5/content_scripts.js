@@ -9,9 +9,8 @@ if (flash.length > 0) {
         // 手动选择的集数
     } else {
         // 从最新一集开始播放，避免追剧时的多次选择
-        if ($('.movie_page_index').length > 0) {
-            var urls = $("div[class='movie_page_index']:last").html().match(/href\="(.*?)"/)[1];
-            urls = urls.replace(/&amp;/gi, "&");
+        if ($('.movie_page_indexa').length > 0) {
+            var urls = $('.movie_page_indexa:last').attr('href');
             window.location.href = urls;
         }
     }
@@ -57,6 +56,7 @@ if (flash.length > 0) {
     // 添加“辅助功能区”，方便下载和其他功能
     var helperblock = $('<div class="same_movie">').css('overflow', 'hidden');
     var helpertitle = $('<div class="same_movie_title">').text('辅助功能');
+    console.log(movietitle);
     var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').text('点击下载');
     downloadbutton.css({
         'background': '#70A3F7',
