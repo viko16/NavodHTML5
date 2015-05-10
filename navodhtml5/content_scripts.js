@@ -57,21 +57,36 @@ if (flash.length > 0) {
 
 
     // 添加“辅助功能区”，方便下载和其他功能
-    var helperblock = $('<div class="same_movie">').css('overflow', 'hidden');
-    var helpertitle = $('<div class="same_movie_title">').text('辅助功能');
-    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').text('点击下载');
-    downloadbutton.css({
-        'background': '#70A3F7',
+    var helperblock = $('<div class="helper">').css({
+        'overflow': 'hidden',
+        'padding': '8px 34px'
+    });
+    var helpertitle = $('<div class="helper-title">').text('辅助功能');
+    helpertitle.css({
+        'display': 'inline-block',
+        'font-size': '20px',
+        'background-color': 'rgb(18, 161, 224)',
         'color': '#fff',
-        'width': '100px',
-        'border-radius': '3px',
-        'margin': '10px auto',
-        'padding': '10px',
-        'text-align': 'center'
+        'padding': '6px 8px'
+    })
+    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '')).text('下载');
+    downloadbutton.css({
+        //这段css取自电影网。。。
+        'text-decoration': 'none',
+        'background-repeat': 'no-repeat',
+        'border': '2px solid #59A1FF',
+        'font': '16px "幼圆"',
+        'color': '#333333',
+        'padding': '5px 12px 7px 12px',
+        'min-width': '62px',
+        'text-align': 'center',
+        //custom
+        'max-width': '30px',
+        'margin-top': '12px'
     });
     helperblock.append(helpertitle, downloadbutton); // 此处可放更多功能按钮
     // 放进侧边栏
-    $('.article').prepend(helperblock);
+    $('.wrap:eq(1)').prepend(helperblock);
 
 
     // 单击暂停|播放
