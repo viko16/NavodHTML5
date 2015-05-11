@@ -1,7 +1,5 @@
 var flash = $('embed#player_fg[FlashVars]');
 
-console.log(flash);
-
 if (flash.length > 0) {
 
     // 自动播放最新一集
@@ -19,8 +17,8 @@ if (flash.length > 0) {
 
     // 提取真实地址
     // 因为 play_url 有两种（暂时发现两种），所以需要作判断 - Randy<randypriv@gmail.com>
-
-    var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/) ? flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1] : flash.attr('FlashVars').match(/play_url_low\=([^\&]+)/)[1];
+    var movieurl = flash.attr('FlashVars').match(/play_url.*?\=([^\&]+)/)[1]; 
+    // var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/) ? flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1] : flash.attr('FlashVars').match(/play_url_low\=([^\&]+)/)[1];
     // 替换路径为域名，方便内外网都能访问
     movieurl = decodeURIComponent(movieurl)
         .replace("172.16.31.101", "navod.scse.com.cn")
