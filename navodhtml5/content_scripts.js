@@ -2,39 +2,23 @@ var flash = $('embed#player_fg[FlashVars]');
 
 if (flash.length > 0) {
 
-    // 自动播放最新一集
-    var Request = {};
-    Request = IsLatest();
-    if (Request['nns_video_index'] > -1) {
-        // 手动选择的集数
-    } else {
-        // 从最新一集开始播放，避免追剧时的多次选择
-        if ($('.movie_page_indexa').length > 0) {
-            var urls = $('.movie_page_indexa:last').attr('href');
-            window.location.href = urls;
-        }
-    }
+    // [功能] 非手动选集时，自动播放最新一集，避免追剧时多次点击
+    if (location.search.indexOf('nns_video_index') === -1)
+        if ($('.movie_page_indexa').length > 0)
+            window.location.href = $('.movie_page_indexa:last').attr('href');
 
-    // 提取真实地址
-    // 因为 play_url 有两种（暂时发现两种），所以需要作判断 - Randy<randypriv@gmail.com>
-    var movieurl = flash.attr('FlashVars').match(/play_url.*?\=([^\&]+)/)[1]; 
-    // var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/) ? flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1] : flash.attr('FlashVars').match(/play_url_low\=([^\&]+)/)[1];
+
+    // 提取视频真实地址
+    var movieurl = flash.attr('FlashVars').match(/play_url.*?\=([^\&]+)/)[1];
+
     // 替换路径为域名，方便内外网都能访问
     movieurl = decodeURIComponent(movieurl)
         .replace("172.16.31.101", "navod.scse.com.cn")
         .replace("172.16.31.102", "navod.scse.com.cn")
         .replace("172.16.31.103", "navod.scse.com.cn");
 
-    // 提取当前视频名
-    var movietitle = $('.daohang_content_nowaddress div:eq(1) b').text();
-    movietitle = movietitle.replace(':', "_")
-                            .replace('/', "_")
-                            .replace('\\' ,"_")
-                            .replace('?', "_")
-                            .replace('<', "_")
-                            .replace('>', "_")
-                            .replace('*', "_")
-                            .replace('|', "_");
+    // 提取当前视频名，移除的特殊字符如右  : / \ ? < > * ^ |
+    var movietitle = $('span#OnlinePlay').text().replace('正在播放：', '').replace(/[:\/\\\?<>\*\^\|]/g, '_');
 
     // 配置 video 标签
     var player = $('<video>');
@@ -46,15 +30,18 @@ if (flash.length > 0) {
         preload: 'auto'
     });
 
-    // 嘘，静悄悄的把播放器换掉，不要告诉其他人
+
+    // [功能] 嘘，静悄悄的把播放器换掉，不要告诉其他人
     var wrapper = $('<div id="html5-video">');
-    wrapper.css('width', 960);
-    wrapper.css('margin', '0 auto');
+    wrapper.css({
+        'width': '960px',
+        'margin': '0 auto'
+    });
     wrapper.append(player);
     $('#bofang').css('height', 'auto').empty().append(wrapper);
 
 
-    // 添加“辅助功能区”，方便下载和其他功能
+    // [功能] 添加“辅助功能区”，方便下载和其他功能
     var helperblock = $('<div class="helper">').css({
         'overflow': 'hidden',
         'padding': '8px 34px'
@@ -66,28 +53,18 @@ if (flash.length > 0) {
         'background-color': 'rgb(18, 161, 224)',
         'color': '#fff',
         'padding': '6px 8px'
-    })
-    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '')).text('下载');
-    downloadbutton.css({
-        //这段css取自电影网。。。
-        'text-decoration': 'none',
-        'background-repeat': 'no-repeat',
-        'border': '2px solid #59A1FF',
-        'font': '16px "幼圆"',
-        'color': '#333333',
-        'padding': '5px 12px 7px 12px',
-        'min-width': '62px',
-        'text-align': 'center',
-        //custom
-        'max-width': '30px',
-        'margin-top': '12px'
     });
-    helperblock.append(helpertitle, downloadbutton); // 此处可放更多功能按钮
+    var downloadbtn = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').addClass('button1').text('下载');
+    downloadbtn.css({
+        'width': '62px',
+        'margin-top': '20px'
+    });
+    helperblock.append(helpertitle, downloadbtn); // 此处可放更多功能按钮
     // 放进侧边栏
     $('.wrap:eq(1)').prepend(helperblock);
 
 
-    // 单击暂停|播放
+    // [功能] 单击暂停|播放
     player.on('click', function () {
         if (this.paused) {
             this.play();
@@ -97,7 +74,7 @@ if (flash.length > 0) {
     });
 
 
-    // 双击全屏|退出
+    // [功能] 双击全屏|退出
     player.on('dblclick', function () {
         if (document.webkitIsFullScreen) {
             document.webkitExitFullscreen();
@@ -107,7 +84,7 @@ if (flash.length > 0) {
     });
 
 
-    // 音量记忆
+    // [功能] 音量记忆
     if (!isNaN(parseFloat(localStorage.volume))) {
         player.prop('volume', localStorage.volume);
     }
@@ -123,10 +100,10 @@ if (flash.length > 0) {
     });
 
 
-    // 快捷键
+    // [功能] 快捷键
     $(document.body).on('keydown', function (evt) {
-        if(evt.target == $('#search_top_txt')[0]) { 
-            return; 
+        if (evt.target == $('#search_top_txt')[0]) {
+            return;
         }
         var time = player.prop('currentTime');
         var volume = player.prop('volume');
@@ -164,40 +141,11 @@ if (flash.length > 0) {
     });
 
 
-    // 播放位置记忆功能
+    // [功能] 播放位置记忆功能
     insertScript('extra.js');
 
-
-    // 优化剧集列表显示位置
-    if ($('.movie_page_index').length > 0) {
-        $("#title_btn_two").css({'display': 'none'});
-        var selects = $("<div style='width:100%;overflow: hidden;margin-top: 20px;'>");
-        $('.movie_page_index').each(function () {
-            selects.append($(this));
-        });
-        $('.movie_remarks').before(selects);
-    }
-
-} // end main
-
-
-/**
- * 读取值对信息，判断是否播放最新一集
- * @returns {Object}
- * @constructor
- */
-function IsLatest() {
-    var url = location.search; // 获取url中"?"符后的字串
-    var theRequest = {};
-    if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        var strs = str.split("&");
-        for (var i = 0; i < strs.length; i++) {
-            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
-        }
-    }
-    return theRequest;
 }
+
 
 /**
  * 往原页面插 JavaScript
