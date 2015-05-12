@@ -9,16 +9,16 @@ if (flash.length > 0) {
         // 手动选择的集数
     } else {
         // 从最新一集开始播放，避免追剧时的多次选择
-        if ($('.movie_page_index').length > 0) {
-            var urls = $("div[class='movie_page_index']:last").html().match(/href\="(.*?)"/)[1];
-            urls = urls.replace(/&amp;/gi, "&");
+        if ($('.movie_page_indexa').length > 0) {
+            var urls = $('.movie_page_indexa:last').attr('href');
             window.location.href = urls;
         }
     }
 
     // 提取真实地址
-    var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1];
-
+    // 因为 play_url 有两种（暂时发现两种），所以需要作判断 - Randy<randypriv@gmail.com>
+    var movieurl = flash.attr('FlashVars').match(/play_url.*?\=([^\&]+)/)[1]; 
+    // var movieurl = flash.attr('FlashVars').match(/play_url\=([^\&]+)/) ? flash.attr('FlashVars').match(/play_url\=([^\&]+)/)[1] : flash.attr('FlashVars').match(/play_url_low\=([^\&]+)/)[1];
     // 替换路径为域名，方便内外网都能访问
     movieurl = decodeURIComponent(movieurl)
         .replace("172.16.31.101", "navod.scse.com.cn")
@@ -47,29 +47,44 @@ if (flash.length > 0) {
     });
 
     // 嘘，静悄悄的把播放器换掉，不要告诉其他人
-    var wrapper = $('<div>');
+    var wrapper = $('<div id="html5-video">');
     wrapper.css('width', 960);
     wrapper.css('margin', '0 auto');
     wrapper.append(player);
-    $('.live_content').css('height', 'auto').empty().append(wrapper);
+    $('#bofang').css('height', 'auto').empty().append(wrapper);
 
 
     // 添加“辅助功能区”，方便下载和其他功能
-    var helperblock = $('<div class="same_movie">').css('overflow', 'hidden');
-    var helpertitle = $('<div class="same_movie_title">').text('辅助功能');
-    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '') + '/' + movietitle + '.mp4').text('点击下载');
-    downloadbutton.css({
-        'background': '#70A3F7',
+    var helperblock = $('<div class="helper">').css({
+        'overflow': 'hidden',
+        'padding': '8px 34px'
+    });
+    var helpertitle = $('<div class="helper-title">').text('辅助功能');
+    helpertitle.css({
+        'display': 'inline-block',
+        'font-size': '20px',
+        'background-color': 'rgb(18, 161, 224)',
         'color': '#fff',
-        'width': '100px',
-        'border-radius': '3px',
-        'margin': '10px auto',
-        'padding': '10px',
-        'text-align': 'center'
+        'padding': '6px 8px'
+    })
+    var downloadbutton = $('<a>').attr('href', movieurl.replace('?start=0', '')).text('下载');
+    downloadbutton.css({
+        //这段css取自电影网。。。
+        'text-decoration': 'none',
+        'background-repeat': 'no-repeat',
+        'border': '2px solid #59A1FF',
+        'font': '16px "幼圆"',
+        'color': '#333333',
+        'padding': '5px 12px 7px 12px',
+        'min-width': '62px',
+        'text-align': 'center',
+        //custom
+        'max-width': '30px',
+        'margin-top': '12px'
     });
     helperblock.append(helpertitle, downloadbutton); // 此处可放更多功能按钮
     // 放进侧边栏
-    $('.player_msgs_right').prepend(helperblock);
+    $('.wrap:eq(1)').prepend(helperblock);
 
 
     // 单击暂停|播放
