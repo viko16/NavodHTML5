@@ -144,14 +144,14 @@
 
         // [功能] 播放位置记忆功能
         insertScript('extra.js');
-
-        //[功能] 清除播放历史记录
-        if ($("body > div.top > div > div.topRight > ul > div").html() != '<ul class="root"></ul>')
-        {
-            var clearBtn = '<li><span class="root1"></span><span class="root2"></span><span class="root3"><a href="javascript:setGlobalVar('+"'historyplay',"+"'');showHistory();"+'"'+'>清除播放历史</a></span></li>';
-            $("body > div.top > div > div.topRight > ul > div > ul").append(clearBtn);
-        }
     }
+
+    // [功能] 清除播放历史记录
+    if ($(".history_content ul.root").html()) {
+        var clearBtn = '<li><span class="root1"></span><span class="root2"></span><span class="root3"><a href="javascript:setGlobalVar(' + "'historyplay'," + "'');showHistory();" + '"' + '>清除播放历史</a></span></li>';
+        $(".history_content ul.root").append(clearBtn);
+    }
+
 })(jQuery);
 
 
