@@ -1,6 +1,9 @@
 NavodHTML5
 ===============
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/eeonnpmppginengdnonfcmkmdfhaliam.svg?style=flat)](https://chrome.google.com/webstore/detail/na%E5%9C%A8%E7%BA%BF%E5%BD%B1%E9%99%A2html5%E6%92%AD%E6%94%BE%E5%99%A8/eeonnpmppginengdnonfcmkmdfhaliam?hl=zh-CN)
+[![GitHub release](https://img.shields.io/github/release/viko16/NavodHTML5.svg?style=flat)](https://github.com/viko16/NavodHTML5/releases/latest)
+
 Chrome插件：NA新在线影院 HTML5 播放器  
 为推广和普及华软 HTML5 而努力
 
